@@ -1,9 +1,17 @@
+function getInputFieldValue(elementField) {
+    let inputFieldValue = parseInt(document.getElementById(elementField).value);
+    return inputFieldValue;
+}
+
+function setTextValue(elementField, textValue) {
+    document.getElementById(elementField).innerText = textValue;
+}
+
 
 // Calculate Food Cost
 document.getElementById('foodExpensesCalculation').addEventListener('click', function () {
-    let foodExpense = document.getElementById('foodExpense');
-    let perFoodBudgetField = document.getElementById('perFoodBudgetField').value;
-    if (isNaN(parseInt(perFoodBudgetField))) {
+    let perFoodBudgetField = getInputFieldValue("perFoodBudgetField");
+    if (isNaN(perFoodBudgetField)) {
         alert("Pleaes enter a valid number")
         document.getElementById('perFoodBudgetField').value = "";
         return false;
@@ -15,26 +23,24 @@ document.getElementById('foodExpensesCalculation').addEventListener('click', fun
         alert("Pleaes select some food")
         return false;
     }
-    console.log("addedFoodNumber", addedFoodNumber);
-    console.log("perFoodBudgetField", perFoodBudgetField);
-    foodExpense.innerText = parseInt(perFoodBudgetField) * addedFoodNumber;
+    let expense = perFoodBudgetField * addedFoodNumber;
+    setTextValue("foodExpense", expense);
 
 });
 
 
 // Calculate Total
 document.getElementById('calculateTotal').addEventListener('click', function () {
-    let subTotal = document.getElementById('subTotal');
-    let shippingCost = document.getElementById('shippingCost').value;
-    let cookingCost = document.getElementById('cookingCost').value;
+    let shippingCost = getInputFieldValue('shippingCost');
+    let cookingCost = getInputFieldValue('cookingCost');
     let foodExpense = document.getElementById('foodExpense').innerText;
-    if (isNaN(parseInt(shippingCost))) {
+    if (isNaN(shippingCost)) {
         alert("Pleaes enter valid shipping cost")
         document.getElementById('shippingCost').value = "";
         return false;
     }
 
-    if (isNaN(parseInt(cookingCost))) {
+    if (isNaN(cookingCost)) {
         alert("Pleaes enter valid cooking cost")
         document.getElementById('cookingCost').value = "";
         return false;
@@ -47,6 +53,9 @@ document.getElementById('calculateTotal').addEventListener('click', function () 
         return false;
     }
 
-    subTotal.innerText = parseInt(shippingCost) + parseInt(cookingCost) + parseInt(foodExpense);
+
+    let totalExpense = shippingCost + cookingCost + parseInt(foodExpense);
+    setTextValue("subTotal", totalExpense);
+
 
 });

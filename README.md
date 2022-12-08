@@ -9,6 +9,6 @@
 # The following technologies I have used to develop this website
 
 - HTML5
-- CSs
+- CSS3
 - Bootstrap 5
 - Javascript

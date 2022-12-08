@@ -6,7 +6,7 @@
 
 - You can select any five food and add cost per food then add shpping and cooking chage then it will calculate the total cost
 
-# The following technologies I have used to develop this platform
+# The following technologies I have used to develop this website
 
 - HTML5
 - CSs
